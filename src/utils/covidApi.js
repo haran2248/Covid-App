@@ -13,14 +13,20 @@ var options = {
 
 request(options, function (error, response, body) {
     const res=JSON.parse(response.body)
-    if(res===null){
-        callback("Enter valid country",undefined)
+    if(res[0]===undefined){
+        callback({
+            error:"Enter valid country"},{
+                confirmed:undefined,
+                dead:undefined,
+                recovered:undefined
+            })
     }
     else{
         callback(undefined,{
+            confirmed:res[0].confirmed,
             dead:res[0].deaths,
-            recovered:res[0].recovered,
-            confirmed:res[0].confirmed
+            recovered:res[0].recovered
+            
         })
     }
 

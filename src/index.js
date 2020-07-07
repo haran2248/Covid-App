@@ -31,10 +31,10 @@ app.get('/details',(req,res)=>{
     )
   }
   else{
-    covid(country,(error,{dead,confirmed,recovered})=>{
+    covid(country,(error,{confirmed,dead,recovered})=>{
           if(error){
-             res.send({
-              error:eror
+            return res.send({
+              error:error
             })
             
           }

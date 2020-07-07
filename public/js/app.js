@@ -13,7 +13,10 @@ message.addEventListener('submit',(e)=>{
         response.json().then((data)=>{
             if(data.error)
             {
-                confirmed.textContent=data.error
+                confirmed.textContent='Please provide correct country'
+                recovered.textContent=''
+             deaths.textContent=''
+                console.log('Error:'+'Pls provide correct country')
             }
             else{
                 confirmed.textContent='Confirmed cases:'+data.confirmed
@@ -22,5 +25,9 @@ message.addEventListener('submit',(e)=>{
                 console.log(data.recovered)
             }
         })
+    }).catch((e)=>{
+        confirmed.textContent=e.error
+        recovered.textContent=''
+         deaths.textContent=''
     })
 })
